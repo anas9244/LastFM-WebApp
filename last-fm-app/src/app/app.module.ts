@@ -21,7 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import {MatSelectModule} from '@angular/material/select';
-
+import { MatTooltipModule } from '@angular/material/tooltip';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +47,8 @@ import {MatSelectModule} from '@angular/material/select';
     HttpClientModule,
     MatInputModule,
     MatCardModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTooltipModule
   ],
   providers: [],
   bootstrap: [AppComponent]

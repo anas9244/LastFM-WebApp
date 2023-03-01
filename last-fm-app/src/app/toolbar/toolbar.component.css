@@ -36,6 +36,7 @@
 .button-compare,
 .button-compare-small {
     background-color: #754ac0;
+    transition: background-color ease 0.3s;
 }
 
 .button-compare:hover,
@@ -53,7 +54,7 @@
     display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 883px) {
     .right-element {
         display: none;
     }

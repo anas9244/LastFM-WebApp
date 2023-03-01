@@ -11,10 +11,12 @@
 
     <h2 style="text-align: center;color:#494949">Top 10 artists in {{getViewValue(countryControl)}}</h2>
     <mat-card class="example-card" *ngFor="let artist of topArtists | async; let i = index">
-        <mat-card-header [class.mat-elevation-z5]="true">
+        <mat-card-header [class.mat-elevation-z2]="true">
             <img mat-card-avatar class="example-header-image" [src]="getImageUrl(artist,3)">
             <mat-card-title>{{i + 1}}. {{artist.name}}</mat-card-title>
-            <mat-card-subtitle>Listeners: {{artist.listeners}}</mat-card-subtitle>
+            <mat-card-subtitle>
+                <p>Listeners: {{nFormatter(artist.listeners,1)}}</p>
+            </mat-card-subtitle>
         </mat-card-header>
     </mat-card>
 
