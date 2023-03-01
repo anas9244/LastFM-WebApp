@@ -13,8 +13,8 @@
 .example-option-img {
     vertical-align: middle;
     margin-right: 8px;
-    margin-top: 15px;
-    background-size: cover;
+    /* background-size: cover; */
+    border-radius: 50px;
 }
 
 [dir='rtl'] .example-option-img {
@@ -22,8 +22,13 @@
     margin-left: 8px;
 }
 
+.name {
+    font-weight: 400;
+}
+
 .listeners {
     /* display: inherit; */
+    font-weight: 200;
 }
 
 @media screen and (max-width: 768px) {

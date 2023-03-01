@@ -1,0 +1,21 @@
+<div class="container">
+    <!-- <h4 style="text-align: center;color:#494949">Choose a country</h4> -->
+    <mat-form-field appearance="fill">
+        <mat-label>Select a country</mat-label>
+        <mat-select [formControl]="countryControl" name="country" (selectionChange)="_getTopArtists()">
+            <mat-option *ngFor="let country of countries" [value]="country.value">
+                {{country.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <h2 style="text-align: center;color:#494949">Top 10 artists in {{getViewValue(countryControl)}}</h2>
+    <mat-card class="example-card" *ngFor="let artist of topArtists | async; let i = index">
+        <mat-card-header [class.mat-elevation-z5]="true">
+            <img mat-card-avatar class="example-header-image" [src]="getImageUrl(artist,3)">
+            <mat-card-title>{{i + 1}}. {{artist.name}}</mat-card-title>
+            <mat-card-subtitle>Listeners: {{artist.listeners}}</mat-card-subtitle>
+        </mat-card-header>
+    </mat-card>
+
+</div>

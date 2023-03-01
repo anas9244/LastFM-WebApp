@@ -4,4 +4,4 @@ export interface Artist {
     mbid: string;
     listeners:string;
   }
-  
+

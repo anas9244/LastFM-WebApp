@@ -19,14 +19,15 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { MatInputModule } from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
-import { CardItemComponent } from './card-item/card-item.component';
+import { TopArtistsComponent } from './top-artists/top-artists.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     ArtistSearchComponent,
-    CardItemComponent,
+    TopArtistsComponent,
   
   ],
   imports: [
@@ -45,7 +46,8 @@ import { CardItemComponent } from './card-item/card-item.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

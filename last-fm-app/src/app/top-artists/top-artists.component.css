@@ -1,0 +1,61 @@
+.container {
+    /* position: relative; */
+    /* set position to relative */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* height: 200px; */
+    /* width: 100%; */
+    /* justify-content: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-form-field {
+    width: 400px;
+}
+
+.example-card {
+    justify-content: center;
+    margin: 5px 0px;
+    width: 50%;
+    background-color: #fff;
+}
+
+.example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+    height: 70px;
+    width: 70px;
+}
+
+mat-card-title {
+    margin-top: 15px;
+    font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+    mat-form-field {
+        width: 80%;
+    }
+    .example-card {
+        width: 80%;
+    }
+}
+
+.center-element {
+    /* position: absolute; */
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* set position to absolute */
+    /* top: -40%; */
+    /* position the element at the center vertically */
+    /* left: 50%; */
+    /* position the element at the center horizontally */
+    /* transform: translate(-50%, -50%); */
+    /* center the element */
+    /* padding: 20px; */
+    /* margin: 0; */
+    /* width: 500px; */
+}
