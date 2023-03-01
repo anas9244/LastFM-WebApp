@@ -24,6 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatRippleModule} from '@angular/material/core';
 import { ArtistDetailsComponent } from './artist-details/artist-details.component';
+import { FooterComponent } from './footer/footer.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +32,7 @@ import { ArtistDetailsComponent } from './artist-details/artist-details.componen
     ArtistSearchComponent,
     TopArtistsComponent,
     ArtistDetailsComponent,
+    FooterComponent
   
   ],
   imports: [

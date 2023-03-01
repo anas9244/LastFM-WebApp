@@ -1,24 +1,28 @@
 <div class="container">
-    <!-- <h4 style="text-align: center;color:#494949">Choose a country</h4> -->
-    <mat-form-field appearance="fill">
-        <mat-label>Select a country</mat-label>
-        <mat-select [formControl]="countryControl" name="country" (selectionChange)="_getTopArtists()">
-            <mat-option *ngFor="let country of countries" [value]="country.value">
-                {{country.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
 
-    <h2 style="text-align: center;color:#494949">Top 10 artists in {{getViewValue(countryControl)}}</h2>
-    <mat-card matRipple [matRippleColor]="'#0000000f'" class="example-card" *ngFor="let artist of topArtists | async; let i = index">
-        <mat-card-header>
-            <img mat-card-avatar class="example-header-image" [src]="getImageUrl(artist,3)">
-            <mat-card-title>{{i + 1}}. {{artist.name}}</mat-card-title>
-            <mat-card-subtitle>
-                <p>Listeners: {{nFormatter(artist.listeners,1)}}</p>
-            </mat-card-subtitle>
-        </mat-card-header>
-    </mat-card>
+    <div class="welcome-container">
+        <h1 class="welcome-header">Welcome to this humble website</h1>
+        <h2>Select a country from the list to see the top 10 artists</h2>
+        <mat-form-field appearance="fill">
+            <mat-select [formControl]="countryControl" name="country" (selectionChange)="_getTopArtists()">
+                <mat-option *ngFor="let country of countries" [value]="country.value">
+                    {{country.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
 
+    <h2 style="text-align: center;color:#673ab7; font-weight: 800; line-height: 56px;display: block;font-size: 25px">Top 10 artists in {{getViewValue(countryControl)}}</h2>
+    <div class="grid-container">
+        <mat-card matRipple [matRippleColor]="'#0000000f'" class="example-card" *ngFor="let artist of topArtists | async; let i = index">
+            <mat-card-header>
+                <img mat-card-avatar class="example-header-image" [src]="getImageUrl(artist,3)">
+                <mat-card-title>{{i + 1}}. {{artist.name}}</mat-card-title>
+                <mat-card-subtitle>
+                    <p>Listeners: {{nFormatter(artist.listeners,2)}}</p>
+                </mat-card-subtitle>
+            </mat-card-header>
+        </mat-card>
+    </div>
 </div>
 <!-- [class.mat-elevation-z2]="true" -->

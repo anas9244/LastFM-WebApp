@@ -1,21 +1,23 @@
 <mat-toolbar color="primary" class="toolbar">
     <div class="left-element">
-        <span color="accent">LastFm
-    </span>
+        <a class="no-style" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"><span>LastFm</span></a>
+
     </div>
     <div class="center-element">
         <app-artist-search></app-artist-search>
     </div>
 
     <div class="right-element">
-        <button mat-button class="button-compare">
+        <a class="no-style" routerLink="/details" routerLinkActive="active" ariaCurrentWhenActive="page"> <button mat-button class="button-compare">
         Compare
       <mat-icon fontIcon="compare"></mat-icon>
     </button>
+        </a>
+
     </div>
 
     <div class="right-element-small">
-        <button mat-fab class="button-compare-small" matTooltip="Compare" color="primary" aria-label="Example icon-button with a heart icon">
+        <button mat-fab class="button-compare-small" matTooltip="Compare" color="primary" aria-label="Example icon-button with a heart icon" [routerLink]="'/details'" [routerLinkActive]="'active'" [ariaCurrentWhenActive]="'page'">
         <mat-icon fontIcon="compare"></mat-icon>
       </button>
     </div>

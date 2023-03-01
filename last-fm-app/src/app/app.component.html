@@ -1,13 +1,11 @@
-<div class="container">
+<div class="main-container">
+
     <app-toolbar></app-toolbar>
-
     <div class="content">
-        <app-top-artists></app-top-artists>
-        <app-artist-details></app-artist-details>
+        <router-outlet></router-outlet>
+        <!-- <app-top-artists></app-top-artists>
+        <app-artist-details></app-artist-details> -->
     </div>
-
-    <mat-toolbar class="footer">
-        <span>&copy; 2023 My Website</span>
-    </mat-toolbar>
+    <app-footer></app-footer>
 
 </div>
