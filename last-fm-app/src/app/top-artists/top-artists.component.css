@@ -30,17 +30,17 @@ mat-form-field {
 .example-card {
     animation: animate 0.6s ease forwards;
     justify-content: center;
-    margin: 1px 0px;
+    margin: 2px 0px;
     width: 500px;
-    background-color: #ffffffc2;
-    color: black;
-    transition: background-color ease 0.3s;
+    /* background-color: #ffffffc2; */
+    color: rgb(63, 63, 63);
+    transition: box-shadow ease 0.5s;
 }
 
 .example-card:hover {
-    background-color: #68141413;
+    background-color: #ffffff;
     cursor: pointer;
-    box-shadow: 5px 5px 5px rgba(33, 33, 33, .2);
+    box-shadow: 10px 10px 10px rgba(33, 33, 33, .2);
 }
 
 .example-header-image {

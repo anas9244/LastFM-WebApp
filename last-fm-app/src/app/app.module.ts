@@ -22,12 +22,15 @@ import {MatCardModule} from '@angular/material/card';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import {MatSelectModule} from '@angular/material/select';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatRippleModule} from '@angular/material/core';
+import { ArtistDetailsComponent } from './artist-details/artist-details.component';
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     ArtistSearchComponent,
     TopArtistsComponent,
+    ArtistDetailsComponent,
   
   ],
   imports: [
@@ -48,7 +51,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatInputModule,
     MatCardModule,
     MatSelectModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

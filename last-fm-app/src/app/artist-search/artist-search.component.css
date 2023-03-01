@@ -24,11 +24,16 @@
 
 .name {
     font-weight: 400;
+    font-size: 1em;
 }
 
 .listeners {
     /* display: inherit; */
     font-weight: 200;
+}
+
+mat-option {
+    height: 60px;
 }
 
 @media screen and (max-width: 768px) {
