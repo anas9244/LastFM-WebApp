@@ -26,6 +26,7 @@ import {MatRippleModule} from '@angular/material/core';
 import { ArtistDetailsComponent } from './artist-details/artist-details.component';
 import { FooterComponent } from './footer/footer.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { CompareComponent } from './compare/compare.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +34,8 @@ import {MatBadgeModule} from '@angular/material/badge';
     ArtistSearchComponent,
     TopArtistsComponent,
     ArtistDetailsComponent,
-    FooterComponent
+    FooterComponent,
+    CompareComponent
   
   ],
   imports: [

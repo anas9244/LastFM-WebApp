@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TopArtistsComponent } from './top-artists/top-artists.component';
 import { ArtistDetailsComponent } from './artist-details/artist-details.component';
+import { CompareComponent } from './compare/compare.component';
 
 const routes: Routes = [
   {path:"home",component:TopArtistsComponent},
   {path:"details/:variableValue", component: ArtistDetailsComponent},
-  { path: '',   redirectTo: '/home', pathMatch: 'full' }
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
+  {path:"compare",component:CompareComponent}
 ];
 
 @NgModule({

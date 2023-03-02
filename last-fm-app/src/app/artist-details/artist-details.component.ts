@@ -1,41 +1,54 @@
-import { Component } from '@angular/core';
-import { Artist } from '../artist.model';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
 import { LastfmService } from '../lastfm.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-artist-details',
   templateUrl: './artist-details.component.html',
   styleUrls: ['./artist-details.component.css']
 })
+
 export class ArtistDetailsComponent {
   fetchedArtist!: any;
   mbid!:string;
   topTracks!:any[];
   topAlbums!:any[];
+  variableValue!: string;
+  myParam!:any;
+
+  @Input() parentComponentName!: string;
 
   constructor(private route: ActivatedRoute,private lastfmService: LastfmService) {}
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
-      const variableValue = params['variableValue'];
-      // do something with variableValue
-      console.log(variableValue);
-      this.mbid = variableValue;
+    // this.route.params.subscribe(params => {
+    //   this.variableValue = params['variableValue'];
+    //   // do something with variableValue
+    //   this.mbid = this.variableValue;
+    // });
+
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.myParam = params.get('variableValue');
+      this.mbid = this.myParam;
+      
+    
+      this.lastfmService.getArtistInfo(this.mbid).subscribe(response => {
+        this.fetchedArtist = response.artist;
+      });
+      this.lastfmService.getTopTracks(this.mbid).subscribe(response => {
+        this.topTracks = response.toptracks.track;
+      });
+      this.lastfmService.getTopAlbums(this.mbid).subscribe(response => {
+        this.topAlbums = response.topalbums.album;
+      });
+
     });
 
-    this.lastfmService.getArtistInfo(this.mbid).subscribe(response => {
-      this.fetchedArtist = response.artist;
-    });
-    this.lastfmService.getTopTracks(this.mbid).subscribe(response => {
-      this.topTracks = response.toptracks.track;
-    });
-    this.lastfmService.getTopAlbums(this.mbid).subscribe(response => {
-      this.topAlbums = response.topalbums.album;
-    });
+   
 
+  
     console.log(this.topTracks);
+  
 
   }
   

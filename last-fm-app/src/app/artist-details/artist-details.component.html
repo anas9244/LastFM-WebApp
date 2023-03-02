@@ -4,8 +4,8 @@
     <div>MusicBrainz ID: {{ mbid }}</div>
 </div> -->
 <div class="container">
-    <div class="card-container">
-        <mat-card class="card" *ngIf="fetchedArtist">
+    <div class="card-container" *ngIf="fetchedArtist">
+        <mat-card class="card">
             <img>
             <div class="img-text">
                 <p class="bottom-left">{{fetchedArtist.name}}</p>
@@ -14,12 +14,13 @@
                     <p>Playcount: {{nFormatter(fetchedArtist.stats.playcount,2)}}</p>
                 </div>
             </div>
-            <div class="header-containter">
-                <p class="top-header">Top 5 albums</p>
-                <p class="top-header">Top 5 tracks</p>
-            </div>
+            <!-- <div class="header-containter"> -->
+
+
+            <!-- </div> -->
             <div class="lists-containter">
                 <ul>
+                    <p class="top-header">Top 5 albums</p>
                     <mat-card-header *ngFor="let album of topAlbums">
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>{{album.name}}</mat-card-title>
@@ -28,6 +29,7 @@
                 </ul>
                 <mat-divider [vertical]="true"></mat-divider>
                 <ul>
+                    <p class="top-header">Top 5 tracks</p>
                     <mat-card-header *ngFor="let track of topTracks">
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>{{track.name}}</mat-card-title>

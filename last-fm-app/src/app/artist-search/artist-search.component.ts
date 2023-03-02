@@ -16,6 +16,7 @@ import { Router } from '@angular/router';
 })
 export class ArtistSearchComponent implements OnInit{
   @ViewChild(MatAutocompleteTrigger)autoComplete!: MatAutocompleteTrigger;
+  
 
   artistControl = new FormControl();
   selectedArtist!: Artist;
@@ -65,7 +66,7 @@ export class ArtistSearchComponent implements OnInit{
     this.artistControl.setValue(artist.name);
     this.image = (artist.image[2] as any)["#text"]
     console.log(this.image);
-    this.navigateToComponent(this.mbid);
+    this.navigateToDetails(this.mbid);
 
   }
 
@@ -89,7 +90,7 @@ export class ArtistSearchComponent implements OnInit{
     return item ? (+num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
   }
 
-  navigateToComponent(variableValue: string) {
+  navigateToDetails(variableValue: string) {
     this.router.navigate(['/details', variableValue]);
   }
   
