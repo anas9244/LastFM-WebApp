@@ -5,6 +5,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { debounceTime, distinctUntilChanged, map, switchMap, tap } from 'rxjs/operators';
 import { Artist } from '../artist.model';
 import { LastfmService } from '../lastfm.service';
+import { Router } from '@angular/router';
 
 interface Countries{
   value: string;
@@ -18,7 +19,7 @@ interface Countries{
 })
 export class TopArtistsComponent implements OnInit {
 
-  constructor(private lastfmService: LastfmService, private http: HttpClient) {}
+  constructor(private lastfmService: LastfmService, private http: HttpClient,private router: Router) {}
   countries: Countries[]  = [
     {value: 'germany', viewValue: 'Germany'},
     {value: 'spain', viewValue: 'Spain'},
@@ -66,6 +67,10 @@ export class TopArtistsComponent implements OnInit {
       return +num >= item.value;
     });
     return item ? (+num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+  }
+
+  navigateToComponent(variableValue: string) {
+    this.router.navigate(['/details', variableValue]);
   }
 
 

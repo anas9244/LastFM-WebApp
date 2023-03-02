@@ -10,17 +10,11 @@
 }
 
 .container {
-    /* position: relative; */
-    /* set position to relative */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* height: 200px; */
-    /* width: 100%; */
-    /* justify-content: center; */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 80px;
 }
 
 .welcome-container {
@@ -30,9 +24,8 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-top: 80px;
-    height: 300px;
-    margin-bottom: 20px;
+    height: 350px;
+    margin-bottom: 30px;
     box-shadow: 0px 10px 10px -1px rgba(0, 0, 0, 0.4);
     color: #ffffff;
 }
@@ -56,45 +49,67 @@ mat-form-field {
     grid-template-columns: repeat(3, 1fr);
     /* 3 columns */
     grid-gap: 10px;
+    margin-top: 20px;
 }
 
 .example-card {
     animation: animate 0.6s ease forwards;
     justify-content: center;
     margin: 2px 0px;
-    width: 300px;
+    width: 400px;
     /* background-color: #ffffffc2; */
     color: rgb(63, 63, 63);
-    transition: box-shadow ease 0.5s;
+    transition: box-shadow ease 0.2s;
+    border-radius: 15px;
+    background: #ffffff;
 }
 
 .example-card:hover {
-    background-color: #ffffff;
+    background-color: #673ab7;
+    color: #ffffff;
     cursor: pointer;
     box-shadow: 10px 10px 10px rgba(33, 33, 33, .2);
 }
 
+.example-card:hover .artist-name {
+    color: #ffffff;
+}
+
+.example-card:hover .listeners {
+    color: #ffffff;
+}
+
 .example-header-image {
-    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
     background-size: cover;
     height: 70px;
     width: 70px;
 }
 
-mat-card-title {
+.artist-name {
     margin-top: 15px;
-    font-weight: 400;
-    font-size: 17px;
+    /* font-weight: 400;
+    font-size: 17px; */
+    color: #673ab7;
+    font-weight: 550;
+    font-size: 1.5em;
+    display: block;
 }
 
-@media screen and (max-width: 940px) {
+.listeners {
+    color: #683ab7a9;
+    font-weight: 500;
+    font-size: 1.0em;
+}
+
+@media screen and (max-width: 1250px) {
     .grid-container {
         grid-template-columns: repeat(2, 1fr);
         /* 2 columns */
     }
 }
 
-@media screen and (max-width: 640px) {
+@media screen and (max-width: 870px) {
     .example-card {
         width: 90%;
     }
@@ -105,23 +120,22 @@ mat-card-title {
         grid-template-columns: repeat(1, 1fr);
         /* 1 column */
     }
-    mat-form-field {
-        width: 90%;
+    .artist-name {
+        font-size: 1.9em;
     }
 }
 
-.center-element {
-    /* position: absolute; */
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* set position to absolute */
-    /* top: -40%; */
-    /* position the element at the center vertically */
-    /* left: 50%; */
-    /* position the element at the center horizontally */
-    /* transform: translate(-50%, -50%); */
-    /* center the element */
-    /* padding: 20px; */
-    /* margin: 0; */
-    /* width: 500px; */
+@media screen and (max-width: 640px) {
+    mat-form-field {
+        width: 90%;
+    }
+    .welcome-header {
+        font-size: 30px;
+    }
+    .welcome-header-2 {
+        font-size: 16px;
+    }
 }
+
+
+/* ------------------------------------------------------ */

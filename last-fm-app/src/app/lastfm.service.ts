@@ -23,8 +23,8 @@ export class LastfmService {
     return this.http.get<any>(url);
   }
 
-  getArtistInfo(artist: string): Observable<any> {
-    const url = `${this.baseUrl}?method=artist.getinfo&artist=${artist}&api_key=${this.apiKey}&format=json`;
+  getArtistInfo(mbid: string): Observable<any> {
+    const url = `${this.baseUrl}?method=artist.getinfo&mbid=${mbid}&api_key=${this.apiKey}&format=json`;
     return this.http.get<any>(url);
   }
 

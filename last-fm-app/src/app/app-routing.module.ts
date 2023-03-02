@@ -5,7 +5,7 @@ import { ArtistDetailsComponent } from './artist-details/artist-details.componen
 
 const routes: Routes = [
   {path:"home",component:TopArtistsComponent},
-  {path:"details", component: ArtistDetailsComponent},
+  {path:"details/:variableValue", component: ArtistDetailsComponent},
   { path: '',   redirectTo: '/home', pathMatch: 'full' }
 ];
 

@@ -17,6 +17,9 @@
     flex: 1;
     display: flex;
     margin-right: auto;
+    font-size: 37px;
+    font-weight: 700;
+    line-height: 56px;
 }
 
 .center-element {
@@ -54,10 +57,13 @@
     display: none;
 }
 
-.no-style {
+a {
     text-decoration: none;
     color: inherit;
     cursor: pointer;
+}
+
+.no-style {
     transition: background-color ease 0.3s;
     color: rgb(231, 231, 231);
 }
@@ -66,12 +72,22 @@
     color: rgb(255, 255, 255);
 }
 
-@media screen and (max-width: 883px) {
+@media screen and (max-width: 870px) {
     .right-element {
         display: none;
     }
     .right-element-small {
         display: flex;
         justify-content: flex-end;
+    }
+    .left-element {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 782px) {
+    .left-element {
+        font-size: 25px;
+        line-height: 21px;
     }
 }

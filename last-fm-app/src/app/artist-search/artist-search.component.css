@@ -15,6 +15,10 @@
     margin-right: 8px;
     /* background-size: cover; */
     border-radius: 50px;
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+    height: 40px;
+    width: 40px;
 }
 
 [dir='rtl'] .example-option-img {
@@ -23,13 +27,15 @@
 }
 
 .name {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1em;
+    color: #363636;
 }
 
 .listeners {
     /* display: inherit; */
-    font-weight: 200;
+    font-weight: 500;
+    color: #6c6c6c;
 }
 
 mat-option {

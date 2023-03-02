@@ -8,5 +8,19 @@ body {
 body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif;
-    background-color: #fafafa;
+    background-color: #f5f5f5;
+    /* overflow-y: scroll; */
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+    /* Set the width of the scrollbar */
+    background-color: rgba(0, 0, 0, 0.11);
+    /* Set the background color of the scrollbar */
+    z-index: 1;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #754ac0;
+    /* Set the color of the scrollbar thumb */
 }

@@ -25,6 +25,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import {MatRippleModule} from '@angular/material/core';
 import { ArtistDetailsComponent } from './artist-details/artist-details.component';
 import { FooterComponent } from './footer/footer.component';
+import {MatBadgeModule} from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -54,7 +55,8 @@ import { FooterComponent } from './footer/footer.component';
     MatCardModule,
     MatSelectModule,
     MatTooltipModule,
-    MatRippleModule
+    MatRippleModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

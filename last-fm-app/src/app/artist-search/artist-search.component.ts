@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { Artist } from '../artist.model';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -26,7 +27,7 @@ export class ArtistSearchComponent implements OnInit{
   //searchQuery = '';
   //filteredArtists: any[] = [];
 
-  constructor(private lastfmService: LastfmService, private http: HttpClient) {}
+  constructor(private lastfmService: LastfmService, private http: HttpClient,private router: Router) {}
 
   ngOnInit() {
 
@@ -36,13 +37,11 @@ export class ArtistSearchComponent implements OnInit{
         distinctUntilChanged(),
         switchMap((inputValue: string) => {
           if (inputValue) {
-            
             return this.lastfmService.searchArtists(inputValue);
           } else {
             this.autoComplete.closePanel();
             return new Observable<Artist[]>;
             // this.filteredArtists=new Observable<Artist[]>;
-            
           }
         }),
         switchMap((response) => {
@@ -52,28 +51,12 @@ export class ArtistSearchComponent implements OnInit{
           });
         })
       );
-
-  
-    
   }
-
-
-  // search() {
-  //   this.lastfmService.searchArtists(this.searchQuery)
-  //     .subscribe(data => {
-  //       this.filteredArtists = data.results.artistmatches.artist;
-  //     });
-  // }
 
   displayArtist(artist: any): string {
     return artist ? artist.name : '';
 
   }
-
-  // selectArtist(event: any) {
-  //   console.log('Selected artist:', event.option.value);
-  // }
-
 
   selectArtist(artist: Artist) {
     this.selectedArtist = artist;
@@ -82,7 +65,8 @@ export class ArtistSearchComponent implements OnInit{
     this.artistControl.setValue(artist.name);
     this.image = (artist.image[2] as any)["#text"]
     console.log(this.image);
-    
+    this.navigateToComponent(this.mbid);
+
   }
 
   getImageUrl(artist: Artist, imgSizeIndex: number): string {
@@ -104,28 +88,11 @@ export class ArtistSearchComponent implements OnInit{
     });
     return item ? (+num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
   }
+
+  navigateToComponent(variableValue: string) {
+    this.router.navigate(['/details', variableValue]);
+  }
   
-
-
-
-
-  // clearList(): void {
-  //   this.filteredArtists = this.artistControl.valueChanges
-  //     .pipe(
-  //       startWith(''),
-  //       map(value => {
-  //         if (!value) {
-  //           return [];
-  //         }
-  //         return value;
-  //       }),
-  //       switchMap((response) => {
-  //         return new Observable<Artist[]>((observer) => {
-  //           observer.next(response.results.artistmatches.artist.filter((artist: { mbid: any; }) => artist.mbid));
-  //         });
-  //       })
-  //     );
-  // }
   
 
 }

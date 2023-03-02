@@ -1,6 +1,6 @@
 <mat-toolbar color="primary" class="toolbar">
-    <div class="left-element">
-        <a class="no-style" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"><span>LastFm</span></a>
+    <div class="left-element" name="app-title">
+        <a [innerHTML]="text" class="no-style" matTooltip="Home" routerLink="/home" routerLinkActive="active" ariaCurrentWhenActive="page"> </a>
 
     </div>
     <div class="center-element">
@@ -8,12 +8,10 @@
     </div>
 
     <div class="right-element">
-        <a class="no-style" routerLink="/details" routerLinkActive="active" ariaCurrentWhenActive="page"> <button mat-button class="button-compare">
-        Compare
-      <mat-icon fontIcon="compare"></mat-icon>
-    </button>
-        </a>
-
+        <button mat-button class="button-compare" [routerLink]="'/details'" [routerLinkActive]="'active'" [ariaCurrentWhenActive]="'page'">
+            Compare
+            <mat-icon fontIcon="compare"></mat-icon>
+        </button>
     </div>
 
     <div class="right-element-small">
