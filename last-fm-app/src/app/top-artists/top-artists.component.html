@@ -12,6 +12,7 @@
     </div>
 
     <h2 style="text-align: center;color:#4c2393; font-weight: 800; line-height: 56px;display: block;font-size: 33px">Top 10 artists in {{getViewValue(countryControl)}}</h2>
+    <mat-progress-spinner *ngIf="loading" mode="indeterminate" size="70"></mat-progress-spinner>
     <div class="grid-container">
         <mat-card matBadge="{{i + 1}}" matBadgePosition="before" matBadgeSize="large" class="example-card" *ngFor="let artist of topArtists | async; let i = index" (click)="navigateToComponent(artist.mbid)">
             <mat-card-header matRipple [matRippleUnbounded]="false" [matRippleColor]="'#0000000f'">

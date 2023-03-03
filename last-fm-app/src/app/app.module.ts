@@ -27,6 +27,8 @@ import { ArtistDetailsComponent } from './artist-details/artist-details.componen
 import { FooterComponent } from './footer/footer.component';
 import {MatBadgeModule} from '@angular/material/badge';
 import { CompareComponent } from './compare/compare.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +60,9 @@ import { CompareComponent } from './compare/compare.component';
     MatSelectModule,
     MatTooltipModule,
     MatRippleModule,
-    MatBadgeModule
+    MatBadgeModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

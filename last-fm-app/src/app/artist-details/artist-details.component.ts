@@ -15,41 +15,38 @@ export class ArtistDetailsComponent {
   topAlbums!:any[];
   variableValue!: string;
   myParam!:any;
+  loading=false;
 
   @Input() parentComponentName!: string;
 
   constructor(private route: ActivatedRoute,private lastfmService: LastfmService) {}
 
   ngOnInit() {
-    // this.route.params.subscribe(params => {
-    //   this.variableValue = params['variableValue'];
-    //   // do something with variableValue
-    //   this.mbid = this.variableValue;
-    // });
 
+    this.fetchDetails()
+
+  }
+  fetchDetails(){
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.myParam = params.get('variableValue');
+      this.loading=true;
       this.mbid = this.myParam;
-      
+      this.fetchedArtist= null;
     
       this.lastfmService.getArtistInfo(this.mbid).subscribe(response => {
         this.fetchedArtist = response.artist;
+       
       });
       this.lastfmService.getTopTracks(this.mbid).subscribe(response => {
         this.topTracks = response.toptracks.track;
+        
       });
       this.lastfmService.getTopAlbums(this.mbid).subscribe(response => {
         this.topAlbums = response.topalbums.album;
+        this.loading=false;
       });
 
     });
-
-   
-
-  
-    console.log(this.topTracks);
-  
-
   }
   
   nFormatter(num: string, digits:number) {

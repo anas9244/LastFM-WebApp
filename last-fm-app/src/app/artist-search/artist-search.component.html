@@ -2,17 +2,18 @@
     <mat-label>Search for an artist</mat-label>
     <input type="text" placeholder="Ex. Eminem" aria-label="Search for an artist" matInput [formControl]="artistControl" [matAutocomplete]="auto">
     <mat-icon matSuffix fontIcon="search" style="color:black;"></mat-icon>
+
+    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectArtist($event.option.value)">
         <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist">
             <img class="example-option-img" height="40" />
             <span class="name"> {{ artist.name }}</span>
             <small class="listeners"> | Listeners: {{nFormatter(artist.listeners,1)}}</small>
-
         </mat-option>
         <mat-option *ngIf="(filteredArtists | async)?.length === 0" [disabled]="true">No results found.</mat-option>
     </mat-autocomplete>
 </mat-form-field>
-
 
 
 

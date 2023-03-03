@@ -29,6 +29,7 @@ export class TopArtistsComponent implements OnInit {
   topArtists!: Observable<any> ;
   // selectedCountry='germany';
   countryControl= new FormControl(this.countries[0].value);
+  loading=false;
 
   getViewValue(selectedCountry: FormControl){
     const selectedViewValue = this.countries.find(option => option.value === selectedCountry.value);
@@ -37,15 +38,20 @@ export class TopArtistsComponent implements OnInit {
   }
 
   _getTopArtists(){
+    this.topArtists= new Observable<any>;
+    this.loading=true;
     this.lastfmService.getTopArtists(this.countryControl.value as any).subscribe(
       artists => this.topArtists = new Observable<any[]>((observer) => {
         observer.next(artists.topartists.artist.filter((artist: { mbid: any; }) => artist.mbid));
+        this.loading=false;
       })
     );
   }
 
   ngOnInit() {
+    
     this._getTopArtists();
+    
   }
 
   getImageUrl(artist: Artist, imgSizeIndex: number): string {

@@ -28,6 +28,8 @@ export class ArtistSearchComponent implements OnInit{
   //searchQuery = '';
   //filteredArtists: any[] = [];
 
+  loading = false;
+
   constructor(private lastfmService: LastfmService, private http: HttpClient,private router: Router) {}
 
   ngOnInit() {
@@ -38,6 +40,7 @@ export class ArtistSearchComponent implements OnInit{
         distinctUntilChanged(),
         switchMap((inputValue: string) => {
           if (inputValue) {
+            this.loading=true;
             return this.lastfmService.searchArtists(inputValue);
           } else {
             this.autoComplete.closePanel();
@@ -47,6 +50,7 @@ export class ArtistSearchComponent implements OnInit{
         }),
         switchMap((response) => {
           console.log(response);
+          this.loading=false;
           return new Observable<Artist[]>((observer) => {
             observer.next(response.results.artistmatches.artist.filter((artist: { mbid: any; }) => artist.mbid));
           });
