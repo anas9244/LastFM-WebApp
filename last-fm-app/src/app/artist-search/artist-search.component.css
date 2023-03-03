@@ -6,9 +6,10 @@
 .example-option-img {
     vertical-align: middle;
     margin-right: 8px;
-    background-size: cover;
     border-radius: 50px;
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    /* background-image: url('/assets/images/stock.jpg'); */
+    background-size: cover;
     height: 40px;
     width: 40px;
 }
@@ -34,7 +35,7 @@ mat-option {
     height: 60px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 782px) {
     .listeners {
         display: none;
     }

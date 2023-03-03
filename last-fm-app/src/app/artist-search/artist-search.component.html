@@ -7,7 +7,7 @@
 
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectArtist($event.option.value)">
         <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist">
-            <img class="example-option-img" height="40" />
+            <img [src]="getImageUrl(artist,1)" class="example-option-img" height="40" />
             <span class="name"> {{ artist.name }}</span>
             <small class="listeners"> | Listeners: {{nFormatter(artist.listeners,1)}}</small>
         </mat-option>

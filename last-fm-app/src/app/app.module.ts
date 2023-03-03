@@ -29,6 +29,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { CompareComponent } from './compare/compare.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
+import ImagesModule from './images/images.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +63,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
     MatRippleModule,
     MatBadgeModule,
     MatProgressSpinnerModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    ImagesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
