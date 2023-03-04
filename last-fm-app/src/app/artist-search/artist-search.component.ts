@@ -6,6 +6,7 @@ import { FormControl } from '@angular/forms';
 import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import ImagesModule from '../images/images.module';
 
 
 @Component({
@@ -22,8 +23,11 @@ export class ArtistSearchComponent implements OnInit {
   images: string[] = [];
   filteredArtists!: Observable<any[]>;
   loading = false;
+  imgFiles!: string[];
 
-  constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router) { }
+  constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router,private imageModule: ImagesModule) {
+    this.imgFiles = imageModule.imageFiles;
+   }
 
   ngOnInit() {
 
@@ -59,10 +63,15 @@ export class ArtistSearchComponent implements OnInit {
     this.navigateToDetails(this.mbid);
   }
 
-  getImageUrl(artist: any, imgSizeIndex: number) {
-
-    return artist && artist.image && artist.image[2] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
+  getImageUrl(artist: any, imgSizeIndex: number): string {
+    const baseUrl = "assets/images/";
+    if (this.imgFiles.includes(artist.mbid)) {
+      return baseUrl + artist.mbid + ".jpg";
+    }
+    else 
+    return artist && artist.image && artist.image[imgSizeIndex] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
   }
+  
   fileExists(url: string) {
     return this.http.head(url).pipe(
       map(() => true), // If the request succeeds, the file exists

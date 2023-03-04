@@ -59,16 +59,33 @@ mat-form-field {
     width: 400px;
     /* background-color: #ffffffc2; */
     color: rgb(63, 63, 63);
-    transition: box-shadow ease 0.2s;
+    transition: box-shadow ease 0.4s;
     border-radius: 15px;
     background: #ffffff;
+    box-shadow: 5px 5px 10px rgba(33, 33, 33, .2);
 }
 
 .example-card:hover {
     background-color: #673ab7;
     color: #ffffff;
     cursor: pointer;
-    box-shadow: 10px 10px 10px rgba(33, 33, 33, .2);
+    box-shadow: 5px 5px 10px rgba(33, 33, 33, .7);
+}
+
+.mat-badge-content {
+    font-size: 100%;
+    transition: background ease 0.4s;
+    border-color: #673ab7;
+    border-width: 3px;
+    border-style: solid;
+}
+
+.example-card:hover .mat-badge-content {
+    color: #673ab7;
+    background: #ffffff;
+    border-color: #673ab7;
+    border-width: 4px;
+    border-style: solid;
 }
 
 .example-card:hover .artist-name {
@@ -100,6 +117,7 @@ mat-form-field {
     color: #683ab7a9;
     font-weight: 500;
     font-size: 1.0em;
+    text-rendering: optimizeLegibility;
 }
 
 @media screen and (max-width: 1250px) {

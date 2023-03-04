@@ -7,7 +7,7 @@
     <mat-progress-spinner *ngIf="loading" mode="indeterminate" size="70"></mat-progress-spinner>
     <div class="card-container" *ngIf="fetchedArtist">
         <mat-card class="card">
-            <div class="image-container" [ngStyle]="{'background': 'linear-gradient( to right, rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.7)), url('+getImageUrl(fetchedArtist,5)+')','background-size': '','background-position': ''}">
+            <div class="image-container" [ngStyle]="{'background': 'linear-gradient( to right, rgba(0, 0, 0, 0.7),rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.7)), url('+getImageUrl(fetchedArtist,5)+')','background-size': '','background-position': ''}">
             </div>
 
             <div class="img-text">
@@ -32,7 +32,7 @@
                 </ul>
                 <mat-divider [vertical]="true"></mat-divider>
                 <ul>
-                    <p class="top-header">Top 5 tracks</p>
+                    <h1 class="top-header">Top 5 tracks</h1>
                     <mat-card-header *ngFor="let track of topTracks">
                         <div mat-card-avatar class="example-header-image"></div>
                         <mat-card-title>{{track.name}}</mat-card-title>
