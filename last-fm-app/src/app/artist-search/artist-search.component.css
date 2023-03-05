@@ -7,16 +7,12 @@
     vertical-align: middle;
     margin-right: 8px;
     border-radius: 50px;
-    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    /* background: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     /* background-image: url('/assets/images/stock.jpg'); */
     background-size: cover;
+    background-position: center;
     height: 40px;
     width: 40px;
-}
-
-[dir='rtl'] .example-option-img {
-    margin-right: 0;
-    margin-left: 8px;
 }
 
 .name {
@@ -39,4 +35,28 @@ mat-option {
     .listeners {
         display: none;
     }
+}
+
+@media screen and (max-width: 400px) {
+    .name {
+        font-weight: 500;
+        font-size: 15px;
+    }
+    .example-option-img {
+        height: 34px;
+        width: 34px;
+    }
+    mat-option {
+        height: 80px;
+    }
+}
+
+mat-progress-spinner {
+    margin-right: 15px;
+    margin-bottom: 5px;
+}
+
+.search-icon {
+    margin-bottom: 3px;
+    margin-right: 10px;
 }

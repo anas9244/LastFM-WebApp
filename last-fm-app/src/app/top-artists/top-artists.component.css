@@ -26,20 +26,21 @@
     width: 100%;
     height: 350px;
     margin-bottom: 30px;
-    box-shadow: 0px 10px 10px -1px rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.5);
     color: #ffffff;
+    text-align: center;
 }
 
 .welcome-header {
-    font-size: 37px;
+    font-size: 40px;
     font-weight: 700;
-    line-height: 56px;
-    display: block;
+    line-height: 40px;
+    display: inline-block;
 }
 
-mat-form-field {
+.select-countries {
     width: 300px;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .grid-container {
@@ -50,10 +51,68 @@ mat-form-field {
     /* 3 columns */
     grid-gap: 10px;
     margin-top: 20px;
+    min-height: 300px;
+}
+
+.loader-card {
+    width: 380px;
+    height: 80px;
+    /* background: #ffffff; */
+    box-shadow: 5px 5px 10px rgba(33, 33, 33, .2);
+    padding: 12px 10px;
+    border-radius: 15px;
+    background: linear-gradient(120deg, #f8f8f8 30%, #ffffff 38%, #ffffff 40%, #f8f8f8 48%);
+    background-size: 200% 100%;
+    animation: load89234 1s infinite;
+    background-position: 100% 0;
+}
+
+.card_load {
+    width: 70px;
+    height: 70px;
+    position: relative;
+    float: left;
+    border-radius: 50%;
+    background: linear-gradient(120deg, #683ab74d 30%, #683ab745 38%, #683ab745 40%, #683ab74d 48%);
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 1s infinite;
+    margin-top: 5px;
+    margin-left: 8px;
+}
+
+.card_load_extreme_descripion,
+.card_load_extreme_sub-descripion {
+    position: relative;
+    float: left;
+    border-radius: 5px;
+    background: linear-gradient(120deg, #683ab74d 30%, #683ab73c 38%, #683ab73c 40%, #683ab74d 48%);
+    margin-left: 20px;
+    background-size: 200% 100%;
+    background-position: 100% 0;
+    animation: load89234 1s infinite;
+}
+
+.card_load_extreme_descripion {
+    width: 50%;
+    height: 20px;
+    margin-top: 16px;
+}
+
+.card_load_extreme_sub-descripion {
+    width: 35%;
+    height: 16px;
+    margin-top: 10px;
+}
+
+@keyframes load89234 {
+    100% {
+        background-position: -100% 0;
+    }
 }
 
 .example-card {
-    animation: animate 0.6s ease forwards;
+    animation: animate 0.4s ease forwards;
     justify-content: center;
     margin: 2px 0px;
     width: 400px;
@@ -148,10 +207,34 @@ mat-form-field {
         width: 90%;
     }
     .welcome-header {
-        font-size: 30px;
+        font-size: 35px;
     }
     .welcome-header-2 {
         font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 517px) {
+    .welcome-header {
+        font-size: 30px;
+    }
+    .welcome-header-2 {
+        font-size: 15px;
+    }
+    .select-countries {
+        width: 90%;
+    }
+    .artist-name {
+        font-size: 1.3em;
+    }
+}
+
+@media screen and (max-width: 447px) {
+    .welcome-header {
+        font-size: 27px;
+    }
+    .welcome-header-2 {
+        font-size: 14px;
     }
 }
 

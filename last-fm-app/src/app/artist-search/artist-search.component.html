@@ -1,15 +1,14 @@
 <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Search for an artist</mat-label>
     <input type="text" placeholder="Ex. Eminem" aria-label="Search for an artist" matInput [formControl]="artistControl" [matAutocomplete]="auto">
-    <mat-icon matSuffix fontIcon="search" style="color:black;"></mat-icon>
+    <mat-icon matSuffix *ngIf="!loading" fontIcon="search" style="color:black;" class="search-icon"></mat-icon>
+    <mat-progress-spinner matSuffix *ngIf="loading" mode="indeterminate" diameter="40"></mat-progress-spinner>
 
-    <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
-
-    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectArtist($event.option.value)">
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectArtist($event.option.value)" class="autocomplete-list">
         <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist">
-            <img [ngStyle]="{'background': 'url('+getImageUrl(artist,3)+')','background-size': 'cover','background-position': 'center'}" class="example-option-img" height="40" />
+            <img [ngStyle]="{'background': 'url('+getImageUrl(artist,0)+')','background-size': 'cover','background-position': 'center'}" class="example-option-img">
             <span class="name"> {{ artist.name }}</span>
-            <small class="listeners"> | Listeners: {{nFormatter(artist.listeners,1)}}</small>
+            <small class="listeners"> | {{addCommas(artist.listeners)}} listeners </small>
         </mat-option>
         <mat-option *ngIf="(filteredArtists | async)?.length === 0" [disabled]="true">No results found.</mat-option>
     </mat-autocomplete>

@@ -16,7 +16,7 @@ export class LastfmService {
   
 
   searchArtists(query: string): Observable<any> {
-    const url = `${this.baseUrl}?method=artist.search&artist=${query}&api_key=${this.apiKey}&format=json`;
+    const url = `${this.baseUrl}?method=artist.search&artist=${query}&api_key=${this.apiKey}&format=json&limit=7`;
     return this.http.get<any>(url);
   }
 

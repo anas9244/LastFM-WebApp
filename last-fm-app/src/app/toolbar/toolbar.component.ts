@@ -1,4 +1,4 @@
-import { Component, HostListener  } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
@@ -6,9 +6,9 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.css']
 })
-export class ToolbarComponent{
+export class ToolbarComponent {
   private windowWidth: number = window.innerWidth;
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private breakpointObserver: BreakpointObserver) { }
 
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
@@ -25,6 +25,6 @@ export class ToolbarComponent{
   get text(): string {
     return this.getText();
   }
-  
-  
+
+
 }

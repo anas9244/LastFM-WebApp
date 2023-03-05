@@ -7,6 +7,7 @@ import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import ImagesModule from '../images/images.module';
+import { ConnectionService } from 'ng-connection-service';
 
 
 @Component({
@@ -25,12 +26,20 @@ export class ArtistSearchComponent implements OnInit {
   loading = false;
   imgFiles!: string[];
 
-  constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router,private imageModule: ImagesModule) {
+  constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router, private imageModule: ImagesModule, private connectionService: ConnectionService) {
     this.imgFiles = imageModule.imageFiles;
-   }
+  }
 
   ngOnInit() {
 
+    this.connectionService.monitor().subscribe(isConnected => {
+      if (isConnected) {
+        this.search();
+      }
+    });
+  }
+
+  search() {
     this.filteredArtists = this.artistControl.valueChanges
       .pipe(
         debounceTime(300),
@@ -68,10 +77,10 @@ export class ArtistSearchComponent implements OnInit {
     if (this.imgFiles.includes(artist.mbid)) {
       return baseUrl + artist.mbid + ".jpg";
     }
-    else 
-    return artist && artist.image && artist.image[imgSizeIndex] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
+    else
+      return artist && artist.image && artist.image[imgSizeIndex] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
   }
-  
+
   fileExists(url: string) {
     return this.http.head(url).pipe(
       map(() => true), // If the request succeeds, the file exists
@@ -82,21 +91,20 @@ export class ArtistSearchComponent implements OnInit {
     );
   }
 
-  nFormatter(num: string, digits: number) {
-    const lookup = [
-      { value: 1, symbol: "" },
-      { value: 1e3, symbol: "k" },
-      { value: 1e6, symbol: "M" },
-      { value: 1e9, symbol: "G" },
-      { value: 1e12, symbol: "T" },
-      { value: 1e15, symbol: "P" },
-      { value: 1e18, symbol: "E" }
-    ];
-    const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
-    var item = lookup.slice().reverse().find(function (item) {
-      return +num >= item.value;
-    });
-    return item ? (+num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+  addCommas(num: number): string {
+    const strNumber = num.toString();
+    const chars = strNumber.split('');
+    const reversedChars = chars.reverse();
+    const groupedDigits: string[] = [];
+    for (let i = 0; i < reversedChars.length; i++) {
+      if (i % 3 === 0 && i !== 0) {
+        groupedDigits.push(',');
+      }
+      groupedDigits.push(reversedChars[i]);
+    }
+    // Reverse the array again and join it into a string
+    const result = groupedDigits.reverse().join('');
+    return result;
   }
 
   navigateToDetails(variableValue: string) {
