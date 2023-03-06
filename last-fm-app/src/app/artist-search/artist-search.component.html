@@ -1,6 +1,6 @@
 <mat-form-field appearance="fill" class="example-full-width">
     <mat-label>Search for an artist</mat-label>
-    <input type="text" placeholder="Ex. Eminem" aria-label="Search for an artist" matInput [formControl]="artistControl" [matAutocomplete]="auto">
+    <input type="text" placeholder="Ex. Queen" aria-label="Search for an artist" matInput [formControl]="artistControl" [matAutocomplete]="auto">
     <mat-icon matSuffix *ngIf="!loading" fontIcon="search" style="color:black;" class="search-icon"></mat-icon>
     <mat-progress-spinner matSuffix *ngIf="loading" mode="indeterminate" diameter="40"></mat-progress-spinner>
 
