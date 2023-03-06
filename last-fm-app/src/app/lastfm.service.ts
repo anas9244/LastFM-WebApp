@@ -13,14 +13,12 @@ export class LastfmService {
 
   constructor(private http: HttpClient) { }
 
-  
-
   searchArtists(query: string): Observable<any> {
     const url = `${this.baseUrl}?method=artist.search&artist=${query}&api_key=${this.apiKey}&format=json&limit=7`;
     return this.http.get<any>(url);
   }
 
-  getTopArtists(country: string,options?:any): Observable<any> {
+  getTopArtists(country: string, options?: any): Observable<any> {
     const url = `${this.baseUrl}?method=geo.gettopartists&country=${country}&api_key=${this.apiKey}&limit=10&format=json`;
     return this.http.get<any>(url);
   }
@@ -38,36 +36,8 @@ export class LastfmService {
   }
   //https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&mbid=bfcc6d75-a6a5-4bc6-8282-47aec8531818&api_key=6601c59abbea9b2c4b8c12adb2c5913c&format=json
 
-  getTopAlbums(mbid: string,options?:any): Observable<any> {
+  getTopAlbums(mbid: string, options?: any): Observable<any> {
     const url = `${this.baseUrl}?method=artist.gettopalbums&mbid=${mbid}&limit=5&api_key=${this.apiKey}&format=json`;
     return this.http.get<any>(url);
   }
 }
-
-// import { Component } from '@angular/core';
-// import { LastfmService } from '../lastfm.service';
-
-// @Component({
-//   selector: 'app-artist-search',
-//   templateUrl: './artist-search.component.html',
-//   styleUrls: ['./artist-search.component.css']
-// })
-// export class ArtistSearchComponent {
-
-//   searchQuery = '';
-//   filteredArtists: any[] = [];
-
-//   constructor(private lastfmService: LastfmService) {}
-
-//   search() {
-//     this.lastfmService.searchArtists(this.searchQuery)
-//       .subscribe(data => {
-//         this.filteredArtists = data.results.artistmatches.artist;
-//       });
-//   }
-
-//   displayArtist(artist: any): string {
-//     return artist ? artist.name : '';
-//   }
-
-// }

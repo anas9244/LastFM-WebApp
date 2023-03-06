@@ -1,6 +1,3 @@
-/* toDo's
--- add a margin-top of 80px to start the view from the toolbar*/
-
 .container {
     display: flex;
     /* flex-direction: column; */
@@ -88,7 +85,7 @@
     z-index: 1;
 }
 
-.bottom-left {
+.artist-title {
     position: absolute;
     bottom: 25px;
     left: 5%;
@@ -97,7 +94,7 @@
     line-height: 30px;
 }
 
-.bottom-right {
+.listeners {
     position: absolute;
     bottom: 8px;
     right: 5%;
@@ -143,40 +140,6 @@ mat-card-subtitle {
     font-size: 15px;
 }
 
-@media screen and (max-width: 870px) {
-    .lists-container {
-        flex-direction: column;
-    }
-    .image-container {
-        background-size: cover;
-    }
-    .bottom-left {
-        font-size: 33px;
-    }
-    .container {
-        min-width: 360px;
-    }
-}
-
-@media screen and (max-width: 620px) {
-    .bottom-left {
-        bottom: 90px;
-        left: 5%;
-    }
-    .bottom-right {
-        /* bottom: 8px; */
-        left: 5%;
-    }
-    .image-container-child {
-        width: 100%;
-        height: 100%;
-        border-radius: 20px 20px 0 0;
-    }
-    /* .image-container-child::after {
-        border-radius: 20px 20px 0 0;
-    } */
-}
-
 li {
     padding: 5px;
     margin: 5px 0;
@@ -184,8 +147,13 @@ li {
     border-radius: 5px;
 }
 
-.example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+.spinner {
+    z-index: -1;
+    position: absolute;
+}
+
+.album-track-thumbnail {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
     background-size: cover;
 }
 
@@ -200,7 +168,36 @@ li {
     }
 }
 
-.spinner {
-    z-index: -1;
-    position: absolute;
+@media screen and (max-width: 620px) {
+    .artist-title {
+        bottom: 90px;
+        left: 5%;
+    }
+    .listeners {
+        /* bottom: 8px; */
+        left: 5%;
+    }
+    .image-container-child {
+        width: 100%;
+        height: 100%;
+        border-radius: 20px 20px 0 0;
+    }
+    /* .image-container-child::after {
+        border-radius: 20px 20px 0 0;
+    } */
+}
+
+@media screen and (max-width: 870px) {
+    .lists-container {
+        flex-direction: column;
+    }
+    .image-container {
+        background-size: cover;
+    }
+    .artist-title {
+        font-size: 33px;
+    }
+    .container {
+        min-width: 360px;
+    }
 }

@@ -9,8 +9,8 @@
             </div>
 
             <div class="img-text">
-                <p #bottomlLeft class="bottom-left">{{fetchedArtist.name}}</p>
-                <div class="bottom-right">
+                <p #bottomlLeft class="artist-title">{{fetchedArtist.name}}</p>
+                <div class="listeners">
                     <p>{{addCommas(fetchedArtist.stats.listeners)}} listeners</p>
                     <p>{{addCommas(fetchedArtist.stats.playcount)}} plays</p>
                 </div>
@@ -20,7 +20,7 @@
                 <ul>
                     <p class="top-header">Top 5 albums</p>
                     <mat-card-header *ngFor="let album of topAlbums">
-                        <div mat-card-avatar class="example-header-image"></div>
+                        <div mat-card-avatar class="album-track-thumbnail" [ngStyle]="{'background-image':' url('+getAlbumImageUrl(album,1)+')'}"></div>
                         <mat-card-title>{{album.name}}</mat-card-title>
                         <mat-card-subtitle>{{addCommas(album.playcount)}} plays</mat-card-subtitle>
                     </mat-card-header>
@@ -29,7 +29,7 @@
                 <ul>
                     <h1 class="top-header">Top 5 tracks</h1>
                     <mat-card-header *ngFor="let track of topTracks">
-                        <div mat-card-avatar class="example-header-image"></div>
+                        <div mat-card-avatar class="album-track-thumbnail" [ngStyle]="{'background-image':' url('+getTrackImageUrl(track,1)+')'}"></div>
                         <mat-card-title>{{track.name}}</mat-card-title>
                         <mat-card-subtitle>{{addCommas(track.playcount)}} plays</mat-card-subtitle>
                     </mat-card-header>

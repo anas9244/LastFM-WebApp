@@ -106,8 +106,8 @@ export class TopArtistsComponent {
     return result;
   }
 
-  navigateToComponent(variableValue: string) {
-    this.router.navigate(['/details', variableValue]);
+  navigateToComponent(mbidParam: string) {
+    this.router.navigate(['/details', mbidParam]);
   }
 
 }

@@ -90,7 +90,7 @@
     max-width: 700px;
 }
 
-@media screen and (max-width: 1470px) {
+@media screen and (max-width: 1415px) {
     .grid-container {
         width: 100%;
         display: flex;
@@ -105,7 +105,7 @@
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1300px) {
     .grid-container-welcome {
         width: 100%;
         flex-direction: column;
