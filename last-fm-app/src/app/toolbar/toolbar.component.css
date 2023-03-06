@@ -23,7 +23,7 @@
 }
 
 .center-element {
-    min-width: 50px;
+    /* min-width: 400px; */
     max-width: 500px;
     width: 100%;
     margin: 23px 0px 0px 0px;
@@ -37,18 +37,32 @@
 }
 
 .button-compare,
-.button-compare-small {
+.button-compare-small,
+.floating-button {
     background-color: #754ac0;
     transition: background-color ease 0.3s;
 }
 
 .button-compare:hover,
-.button-compare-small:hover {
+.button-compare-small,
+.floating-button:hover {
     background-color: #4f2b8e;
 }
 
 .button-compare {
     padding: 24px;
+    width: 150px;
+}
+
+.floating-button {
+    position: fixed;
+    z-index: 9999;
+    bottom: 32px;
+    right: 32px;
+    color: white;
+    display: none;
+    width: 60px;
+    height: 60px;
 }
 
 .right-element-small {
@@ -80,12 +94,18 @@ a {
         display: flex;
         justify-content: center;
     }
-    .left-element {
+    /* .left-element {
         font-size: 26px;
+    } */
+    .floating-button {
+        display: inherit;
+    }
+    .center-element {
+        max-width: 100%;
     }
 }
 
-@media screen and (max-width: 782px) {
+@media screen and (max-width: 700px) {
     .left-element {
         font-size: 25px;
         line-height: 21px;

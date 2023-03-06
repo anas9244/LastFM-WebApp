@@ -1,15 +1,22 @@
 <div class="container">
+    <div class="welcome-container">
+        <h2 class="welcome-header-2">Compare two artists</h2>
+        <div class="grid-container-welcome">
+            <app-artist-search [parentComponentData]="{parent:'compare',side:'left'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
+            <span class="vs">Vs.</span>
+            <app-artist-search [parentComponentData]="{parent:'compare',side:'right'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
+        </div>
+    </div>
     <div class="grid-container">
         <div class="compare-card">
             <div class="details-container">
-                <app-artist-search [parentComponentData]="{parent:'compare',side:'left'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
                 <app-artist-details [parentComponentData]="{parent:'compare',side:'left'}" #left_details class="details"></app-artist-details>
                 <!--[receivedArtistData]="artistData"-->
             </div>
         </div>
+
         <div class="compare-card">
             <div class="details-container">
-                <app-artist-search [parentComponentData]="{parent:'compare',side:'right'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
                 <app-artist-details [parentComponentData]="{parent:'compare',side:'right'}" #right_details class="details"></app-artist-details>
                 <!--[receivedArtistData]="artistData"-->
             </div>
