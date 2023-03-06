@@ -5,9 +5,9 @@ import { ArtistDetailsComponent } from './artist-details/artist-details.componen
 import { CompareComponent } from './compare/compare.component';
 
 const routes: Routes = [
+  { path: '',   redirectTo: '/home', pathMatch: 'full' },
   {path:"home",component:TopArtistsComponent},
   {path:"details/:mbidParam", component: ArtistDetailsComponent},
-  { path: '',   redirectTo: '/home', pathMatch: 'full' },
   {path:"compare",component:CompareComponent}
 ];
 
