@@ -30,7 +30,9 @@ body::-webkit-scrollbar-thumb {
 }
 
 mat-option span {
+    /* width: 100%; */
     text-overflow: ellipsis!important;
     white-space: nowrap!important;
     overflow: hidden!important;
+    display: inline!important;
 }

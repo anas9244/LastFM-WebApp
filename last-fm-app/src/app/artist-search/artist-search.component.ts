@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { LastfmService } from '../lastfm.service';
 import { Observable, of } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
@@ -9,14 +9,27 @@ import { Router } from '@angular/router';
 import ImagesModule from '../images/images.module';
 import { ConnectionService } from 'ng-connection-service';
 
+interface ParentComponentData {
+  parent: string;
+  side: string;
+}
 
+interface SentArtistData {
+  mbid: string;
+  side: string;
+}
 @Component({
   selector: 'app-artist-search',
   templateUrl: './artist-search.component.html',
   styleUrls: ['./artist-search.component.css']
 })
+
 export class ArtistSearchComponent implements OnInit {
   @ViewChild(MatAutocompleteTrigger) autoComplete!: MatAutocompleteTrigger;
+
+  
+  @Input() parentComponentData!: ParentComponentData;
+  @Output() artistEmitter = new EventEmitter<SentArtistData>();
 
   artistControl = new FormControl();
   mbid!: string;
@@ -31,6 +44,7 @@ export class ArtistSearchComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.parentComponentData);
 
     this.connectionService.monitor().subscribe(isConnected => {
       if (isConnected) {
@@ -107,8 +121,12 @@ export class ArtistSearchComponent implements OnInit {
     return result;
   }
 
-  navigateToDetails(variableValue: string) {
-    this.router.navigate(['/details', variableValue]);
+  navigateToDetails(artistMbid: string) {
+    if (this.parentComponentData.parent=="compare")
+      this.artistEmitter.emit({mbid:artistMbid, side: this.parentComponentData.side});
+    else
+      this.router.navigate(['/details', artistMbid]);
+      
   }
 
 }

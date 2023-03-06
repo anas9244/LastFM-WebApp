@@ -4,6 +4,7 @@
 }
 
 .example-option-img {
+    display: inline-block;
     vertical-align: middle;
     margin-right: 8px;
     border-radius: 50px;
@@ -16,12 +17,17 @@
 }
 
 .name {
+    /* align-items: middle; */
+    margin-left: 4.1px;
+    vertical-align: middle;
+    /* display: inline-block; */
     font-weight: 500;
     font-size: 1em;
     color: #363636;
 }
 
 .listeners {
+    /* display: inline-block; */
     /* display: inherit; */
     font-weight: 500;
     color: #6c6c6c;
@@ -29,12 +35,6 @@
 
 mat-option {
     height: 60px;
-}
-
-@media screen and (max-width: 782px) {
-    .listeners {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 400px) {
@@ -45,9 +45,6 @@ mat-option {
     .example-option-img {
         height: 34px;
         width: 34px;
-    }
-    mat-option {
-        height: 80px;
     }
 }
 

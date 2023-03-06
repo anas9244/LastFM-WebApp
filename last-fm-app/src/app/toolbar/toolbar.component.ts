@@ -8,6 +8,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 })
 export class ToolbarComponent {
   private windowWidth: number = window.innerWidth;
+  _parentComponentData = {parent:'ToolBarComponent',side:""};
   constructor(private breakpointObserver: BreakpointObserver) { }
 
   @HostListener('window:resize', ['$event'])

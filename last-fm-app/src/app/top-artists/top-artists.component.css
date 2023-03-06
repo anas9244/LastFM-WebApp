@@ -112,7 +112,7 @@
 }
 
 .example-card {
-    animation: animate 0.4s ease forwards;
+    animation: animate 0.8s ease forwards;
     justify-content: center;
     margin: 2px 0px;
     width: 400px;

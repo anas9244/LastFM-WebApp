@@ -1,16 +1,18 @@
 <div class="container">
     <div class="grid-container">
-        <mat-card class="compare-card">
+        <div class="compare-card">
             <div class="details-container">
-                <app-artist-search class="search"></app-artist-search>
-                <app-artist-details class="details"></app-artist-details>
+                <app-artist-search [parentComponentData]="{parent:'compare',side:'left'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
+                <app-artist-details [parentComponentData]="{parent:'compare',side:'left'}" #left_details class="details"></app-artist-details>
+                <!--[receivedArtistData]="artistData"-->
             </div>
-        </mat-card>
-        <mat-card class="compare-card">
+        </div>
+        <div class="compare-card">
             <div class="details-container">
-                <app-artist-search class="search"></app-artist-search>
-                <app-artist-details class="details"></app-artist-details>
+                <app-artist-search [parentComponentData]="{parent:'compare',side:'right'}" (artistEmitter)="onDataReceived($event)" class="search"></app-artist-search>
+                <app-artist-details [parentComponentData]="{parent:'compare',side:'right'}" #right_details class="details"></app-artist-details>
+                <!--[receivedArtistData]="artistData"-->
             </div>
-        </mat-card>
+        </div>
     </div>
 </div>
