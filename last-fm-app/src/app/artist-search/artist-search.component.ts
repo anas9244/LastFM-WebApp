@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { LastfmService } from '../lastfm.service';
 import { Observable, of } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
@@ -32,6 +32,7 @@ export class ArtistSearchComponent implements OnInit {
 
   @Input() parentComponentData!: ParentComponentData;
   @Output() artistEmitter = new EventEmitter<SentArtistData>();
+  @ViewChild('search') searchInput!: ElementRef;
 
   artistControl = new FormControl(); // to store the search query
   mbid!: string; // mbid of artits 
@@ -80,9 +81,11 @@ export class ArtistSearchComponent implements OnInit {
   }
   // handle the chosen artist from autocomplete, for showing the name in the search field and to transfer the mbid
   selectArtist(artist: any) {
+    this.searchInput.nativeElement.blur();
     this.mbid = artist.mbid;
     this.artistControl.setValue(artist.name);
     this.navigateToDetails(this.mbid);
+    
   }
   // get the artists image given the fetched artist and the size of the image 
   getImageUrl(artist: any, imgSizeIndex: number): string {
