@@ -48,7 +48,7 @@ To achieve enjoyable experience and useability, some of the most important desig
 - colors and graphic simplicity
 - visual hierarchy: arranging and organizing the elements so that visitors naturally gravitate toward the most important elements first
 - Conventionality: some of the most important web design conventions were met including:
-* Placing a logo at the top left (or center) of a page
-* Making the logo clickable, so it always brings a visitor back to the homepage.
-* Having buttons that change color/appearance when you hover over them.
-* Typography: texts are easily legible and readable, even over image (ex. Details view with a black gradient on the banner)
+    * Placing a logo at the top left (or center) of a page
+    * Making the logo clickable, so it always brings a visitor back to the homepage.
+    * Having buttons that change color/appearance when you hover over them.
+    * Typography: texts are easily legible and readable, even over image (ex. Details view with a black gradient on the banner)
