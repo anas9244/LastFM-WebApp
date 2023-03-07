@@ -41,18 +41,20 @@ export class ArtistDetailsComponent {
   ngAfterViewInit() {
     // check if details component is being used in compare and adapt the view accordingly
     console.log(this.parentComponentData);
-    if (this.parentComponentData.parent == "compare") {
-      this.imageContainerChild.changes.subscribe(() => {
-        this.imageContainerChild.first.nativeElement.style.width = "100%";
-        this.imageContainerChild.first.nativeElement.style.height = "100%";
-        this.renderer.setStyle(this.imageContainerChild.first.nativeElement, 'border-radius', '20px 20px 0 0');
-      });
-      this.listContainer.changes.subscribe(() => {
-        this.renderer.setStyle(this.listContainer.first.nativeElement, 'flex-direction', 'column');
-      });
-      this.bottomlLeft.changes.subscribe(() => {
-        this.renderer.setStyle(this.bottomlLeft.first.nativeElement, 'font-size', '33px');
-      });
+    if (this.parentComponentData) {
+      if (this.parentComponentData.parent == "compare") {
+        this.imageContainerChild.changes.subscribe(() => {
+          this.imageContainerChild.first.nativeElement.style.width = "100%";
+          this.imageContainerChild.first.nativeElement.style.height = "100%";
+          this.renderer.setStyle(this.imageContainerChild.first.nativeElement, 'border-radius', '20px 20px 0 0');
+        });
+        this.listContainer.changes.subscribe(() => {
+          this.renderer.setStyle(this.listContainer.first.nativeElement, 'flex-direction', 'column');
+        });
+        this.bottomlLeft.changes.subscribe(() => {
+          this.renderer.setStyle(this.bottomlLeft.first.nativeElement, 'font-size', '33px');
+        });
+      }
     }
   }
 
