@@ -3,7 +3,7 @@ import { LastfmService } from '../lastfm.service';
 import { Observable, of } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { FormControl } from '@angular/forms';
-import { MatAutocompleteTrigger } from '@angular/material/autocomplete';
+import { MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import ImagesModule from '../images/images.module';
@@ -27,9 +27,8 @@ interface SentArtistData {
 })
 
 export class ArtistSearchComponent implements OnInit {
-  // obtain the autocomplete element, so that is can be closed input is cleared
+  // obtain the autocomplete element, so that it can be closed and cleared when input is cleared
   @ViewChild(MatAutocompleteTrigger) autoComplete!: MatAutocompleteTrigger;
-
 
   @Input() parentComponentData!: ParentComponentData;
   @Output() artistEmitter = new EventEmitter<SentArtistData>();
@@ -39,7 +38,7 @@ export class ArtistSearchComponent implements OnInit {
   filteredArtists!: Observable<any[]>; // found artists
   loading = false; //toggle lading spinner
   imgFiles!: string[]; // list of local artits images 
-
+ 
   constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router, private imageModule: ImagesModule, private connectionService: ConnectionService) {
     this.imgFiles = imageModule.imageFiles;
   }
@@ -65,11 +64,14 @@ export class ArtistSearchComponent implements OnInit {
             return this.lastfmService.searchArtists(inputValue);
           } else {
             this.autoComplete.closePanel();
-            return new Observable<any[]>;
+            this.autoComplete.autocomplete.options.forEach(option => option.deselect());
+            this.autoComplete.autocomplete.options.reset([]);
+            return [];
           }
-        }),
+        }), 
         switchMap((response) => {
           this.loading = false;
+         
           return new Observable<any[]>((observer) => {
             observer.next(response.results.artistmatches.artist.filter((artist: { mbid: any; }) => artist.mbid));
           });
