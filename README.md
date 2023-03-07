@@ -14,7 +14,7 @@ https://drive.google.com/drive/folders/1zHT3jUK4RJwGVaf1nXWsujwnBcPojg3q?usp=sha
 
 ## Structure and components:
 The following diagram shows the structure of the app:
-![App structure](Component Diagram.png)
+![App structure](Component_Diagram.png)
 ### Search Component 
 Used in Toolbar Component and in Compare Component. It includes an input and an autocomplete element.
 - When used in Toolbar Component:
