@@ -61,7 +61,7 @@ export class ArtistDetailsComponent {
     this.fetchDetailsMain();
   }
 
-  fetchDetailsMain() { 
+  fetchDetailsMain() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.mbidParam = params.get('mbidParam');
 
@@ -73,7 +73,7 @@ export class ArtistDetailsComponent {
     });
   }
 
-// helper function for fetching artists details with the given mbid. Also to use externally in the compare component
+  // helper function for fetching artists details with the given mbid. Also to use externally in the compare component
   _fetchDetails(mbid: string) {
     this.loading = true;
     this.fetchedArtist = null;
@@ -112,7 +112,7 @@ export class ArtistDetailsComponent {
       return baseUrl + artist.mbid + ".jpg";
     }
     else
-    // else use the one from lastFm (just an image of a star)
+      // else use the one from lastFm (just an image of a star)
       return artist && artist.image && artist.image[imgSizeIndex] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
   }
 

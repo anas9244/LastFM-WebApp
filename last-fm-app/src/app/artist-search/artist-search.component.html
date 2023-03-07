@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill" class="example-full-width">
+<mat-form-field appearance="fill" class="main-search">
     <mat-label>Search for an artist</mat-label>
     <input type="text" placeholder="Ex. Queen" aria-label="Search for an artist" matInput [formControl]="artistControl" [matAutocomplete]="auto">
     <mat-icon matSuffix *ngIf="!loading" fontIcon="search" style="color:black;" class="search-icon"></mat-icon>
@@ -6,7 +6,7 @@
 
     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectArtist($event.option.value)" class="autocomplete-list">
         <mat-option *ngFor="let artist of filteredArtists | async" [value]="artist">
-            <div [ngStyle]="{'background': 'url('+getImageUrl(artist,0)+')','background-size': 'cover','background-position': 'center'}" class="example-option-img"></div>
+            <div [ngStyle]="{'background': 'url('+getImageUrl(artist,0)+')','background-size': 'cover','background-position': 'center'}" class="search-thumbnail"></div>
             <span class="name"> {{ artist.name }}  <small class="listeners"> | {{addCommas(artist.listeners)}} listeners </small></span>
 
         </mat-option>

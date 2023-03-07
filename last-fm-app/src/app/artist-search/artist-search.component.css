@@ -1,9 +1,9 @@
-.example-full-width {
+.main-search {
     width: 100%;
     max-height: 74px;
 }
 
-.example-option-img {
+.search-thumbnail {
     display: inline-block;
     vertical-align: middle;
     margin-right: 8px;
@@ -42,7 +42,7 @@ mat-option {
         font-weight: 500;
         font-size: 15px;
     }
-    .example-option-img {
+    .search-thumbnail {
         height: 34px;
         width: 34px;
     }

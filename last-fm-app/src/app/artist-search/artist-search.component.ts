@@ -9,11 +9,13 @@ import { Router } from '@angular/router';
 import ImagesModule from '../images/images.module';
 import { ConnectionService } from 'ng-connection-service';
 
+// to determine in which view (compare or details) this component is being used
 interface ParentComponentData {
   parent: string;
   side: string;
 }
-
+// to send  the mbid of the chosen artist, and which side of the compare view was used
+// only relevant when used in compare
 interface SentArtistData {
   mbid: string;
   side: string;
@@ -25,34 +27,33 @@ interface SentArtistData {
 })
 
 export class ArtistSearchComponent implements OnInit {
+  // obtain the autocomplete element, so that is can be closed input is cleared
   @ViewChild(MatAutocompleteTrigger) autoComplete!: MatAutocompleteTrigger;
 
-  
+
   @Input() parentComponentData!: ParentComponentData;
   @Output() artistEmitter = new EventEmitter<SentArtistData>();
 
-  artistControl = new FormControl();
-  mbid!: string;
-  image!: string;
-  images: string[] = [];
-  filteredArtists!: Observable<any[]>;
-  loading = false;
-  imgFiles!: string[];
+  artistControl = new FormControl(); // to store the search query
+  mbid!: string; // mbid of artits 
+  filteredArtists!: Observable<any[]>; // found artists
+  loading = false; //toggle lading spinner
+  imgFiles!: string[]; // list of local artits images 
 
   constructor(private lastfmService: LastfmService, private http: HttpClient, private router: Router, private imageModule: ImagesModule, private connectionService: ConnectionService) {
     this.imgFiles = imageModule.imageFiles;
   }
 
   ngOnInit() {
-    console.log(this.parentComponentData);
 
+    // handle search attempt after connection has resumed 
     this.connectionService.monitor().subscribe(isConnected => {
       if (isConnected) {
         this.search();
       }
     });
   }
-
+  /* perform artists search using the respective function from lastFm Service and store the found artists */
   search() {
     this.filteredArtists = this.artistControl.valueChanges
       .pipe(
@@ -75,17 +76,13 @@ export class ArtistSearchComponent implements OnInit {
         })
       );
   }
-
+  // handle the chosen artist from autocomplete, for showing the name in the search field and to transfer the mbid
   selectArtist(artist: any) {
-    // this.selectedArtist = artist;
     this.mbid = artist.mbid;
-    console.log(this.mbid);
     this.artistControl.setValue(artist.name);
-    this.image = (artist.image[2] as any)["#text"]
-    console.log(this.image);
     this.navigateToDetails(this.mbid);
   }
-
+  // get the artists image given the fetched artist and the size of the image 
   getImageUrl(artist: any, imgSizeIndex: number): string {
     const baseUrl = "assets/images/";
     if (this.imgFiles.includes(artist.mbid)) {
@@ -94,17 +91,7 @@ export class ArtistSearchComponent implements OnInit {
     else
       return artist && artist.image && artist.image[imgSizeIndex] && (artist.image[imgSizeIndex] as any)["#text"] ? (artist.image[imgSizeIndex] as any)["#text"] : '';
   }
-
-  fileExists(url: string) {
-    return this.http.head(url).pipe(
-      map(() => true), // If the request succeeds, the file exists
-      catchError((error) => {
-        console.log(`Error checking if ${url} exists: ${error}`);
-        return of(false);
-      }) // If the request fails, the file doesn't exist
-    );
-  }
-
+  // break down big numbers into commas ever thousand 
   addCommas(num: number): string {
     const strNumber = num.toString();
     const chars = strNumber.split('');
@@ -120,13 +107,12 @@ export class ArtistSearchComponent implements OnInit {
     const result = groupedDigits.reverse().join('');
     return result;
   }
-
+  // either send the mbid and side of search component to the respective details component  when used in compare 
   navigateToDetails(artistMbid: string) {
-    if (this.parentComponentData.parent=="compare")
-      this.artistEmitter.emit({mbid:artistMbid, side: this.parentComponentData.side});
+    if (this.parentComponentData.parent == "compare")
+      this.artistEmitter.emit({ mbid: artistMbid, side: this.parentComponentData.side });
     else
       this.router.navigate(['/details', artistMbid]);
-      
   }
 
 }
