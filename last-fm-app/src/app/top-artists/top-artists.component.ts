@@ -25,7 +25,7 @@ export class TopArtistsComponent {
   countries: Countries[] = [
     { value: 'germany', viewValue: 'Germany' },
     { value: 'spain', viewValue: 'Spain' },
-    { value: 'italy', viewValue: 'Italy' },
+    { value: 'italy', viewValue: 'Italy' },{value:'united states',viewValue:'USA'}
   ];
 
   topArtists!: any;
